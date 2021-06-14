@@ -296,3 +296,5 @@ LEAFLET_CONFIG = {
     'RESET_VIEW': False,
     'SCALE': None
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

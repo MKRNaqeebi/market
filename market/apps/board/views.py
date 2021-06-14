@@ -7,7 +7,7 @@ from django.views.generic import (DeleteView,
                                   TemplateView)
 
 from extra_views import (CreateWithInlinesView,
-                         InlineFormSet,
+                         InlineFormSetFactory,
                          UpdateWithInlinesView)
 from functools import reduce
 from itertools import chain
@@ -22,7 +22,7 @@ from market.apps.core.mixins import (CreateWithOwnerMixin,
                                      SellerRequiredMixin)
 
 
-class ImagesInline(InlineFormSet):
+class ImagesInline(InlineFormSetFactory):
     model = PostImage
     fields = ['image']
     extra = 5

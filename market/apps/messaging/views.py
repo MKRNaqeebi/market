@@ -30,7 +30,7 @@ class MessageCreateView(CreateWithSenderMixin, CreateWithInlinesView):
         else:
             raise Http404("Invalid recipient attempted.")
         # Only objects owned by one of the two messengers can be discussed.
-        form.fields['referenced_post'].queryset = Post.objects.filter(owner=recipient or self.request.profile).order_by('-modified')
+        form.fields['referenced_post'].queryset = Post.objects.filter(owner=recipient[0] or self.request.user.profile).order_by('-modified')
         return form
 
     def get_success_url(self):
@@ -47,7 +47,7 @@ class MessageDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         message = Message.objects.get(slug=self.kwargs['slug'])
         # If the message is for us, grab profile for the sender, otherwise the recipient
-        if message.recipient == self.request.profile:
+        if message.recipient == self.request.user.profile:
             context['in_inbox'] = True
             context['social_slug'] = (SocialProfile.objects.get(owner=message.sender)).slug
             # Other messages involving this person
@@ -68,6 +68,6 @@ class MessageListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['outbox'] = Message.objects.filter(sender=self.request.profile).order_by('-created')
-        context['inbox'] = Message.objects.filter(recipient=self.request.profile).order_by('-created')
+        context['outbox'] = Message.objects.filter(sender=self.request.user.profile).order_by('-created')
+        context['inbox'] = Message.objects.filter(recipient=self.request.user.profile).order_by('-created')
         return context

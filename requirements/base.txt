@@ -1,35 +1,63 @@
-# Django 1.11.5
-django==1.11.5
+# Django 1.11.5 django==1.11.5
 
-# Handle user authentication and registration
-django-allauth==0.33.0
+# Handle user authentication and registration django-allauth==0.33.0
 
-# For configuration handling
-python-decouple==3.1
+# For configuration handling python-decouple==3.1
 
-# For processing JS and CSS
-django-compressor==2.2
-django-libsass==0.7
+# For processing JS and CSS django-compressor==2.2 django-libsass==0.7
 
-# For nicer forms
-django-crispy-forms==1.7.0
+# For nicer forms django-crispy-forms==1.7.0 django-extensions==1.9.1 django-extra-views==0.9.0
 
-django-extensions==1.9.1
-django-extra-views==0.9.0
+# For prices django-prices==0.7.1
 
-# For prices
-django-prices==0.7.1
+# For image handling Pillow==4.3.0
 
-# For image handling
-Pillow==4.3.0
-
-# Tagulous only supports Django 1.11 on this branch
-git+git://github.com/radiac/django-tagulous.git@feature/django-1_11#egg=django-tagulous
+# Tagulous only supports Django 1.11 on this branch git+git://github.com/radiac/django-tagulous.git@feature/django-1_11#egg=django-tagulous
 
 # Location and map
-# Note that [field] is an 'extra dependency' which provides fields with map widgets via django-leaflet
-django-geojson[field]==2.10.0
+# Note that [field] is an 'extra dependency' which provides fields with map widgets via django-leaflet django-geojson[field]==2.10.0
 # django-geoposition==0.3.0
 
 # For searching and sorting
 
+
+
+asgiref==3.3.4
+Babel==2.9.1
+certifi==2021.5.30
+cffi==1.14.5
+chardet==4.0.0
+cryptography==3.4.7
+defusedxml==0.7.1
+Django==3.2.4
+django-allauth==0.44.0
+django-appconf==1.0.4
+django-compressor==2.4.1
+django-crispy-forms==1.12.0
+django-extensions==3.1.3
+django-extra-views==0.14.0
+django-geojson==3.2.0
+django-leaflet==0.28.1
+django-libsass==0.8
+django-prices==2.2.0
+django-tagulous==1.1.0
+enmerkar==0.7.1
+idna==2.10
+jsonfield==3.1.0
+libsass==0.21.0
+oauthlib==3.1.1
+Pillow==8.2.0
+prices==1.1.0
+pycparser==2.20
+PyJWT==2.1.0
+python-decouple==3.4
+python3-openid==3.2.0
+pytz==2021.1
+rcssmin==1.0.6
+requests==2.25.1
+requests-oauthlib==1.3.0
+rjsmin==1.1.0
+six==1.16.0
+sqlparse==0.4.1
+typing-extensions==3.10.0.0
+urllib3==1.26.5

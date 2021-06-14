@@ -1,6 +1,6 @@
 {% load compress %}
 {% load leaflet_tags %}
-{% load staticfiles %}
+{% load static %} 
 
 <!doctype html>
 <html lang="en">
@@ -55,17 +55,17 @@
       <div class="navbar-nav">
         {# url_name is the named url e.g., 'social:update' #}
         {% with url_name=request.resolver_match.view_name %}
-          {% if profile %}
-            {% if profile.is_seller %}
+          {% if user.profile %}
+            {% if user.profile.is_seller %}
               <a href="{% url 'board:create' %}" class="btn btn-outline-light mr-4"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Create post</a>
             {% endif %}
             <div class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle active" role="button" data-toggle="dropdown">
-                <i class="fa fa-user-circle mr-1" aria-hidden="true"></i>{{ profile }}
+                <i class="fa fa-user-circle mr-1" aria-hidden="true"></i>{{ user.profile }}
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                {% if profile.is_seller %}
-                  <h5 class="dropdown-header">{{ profile }}</h5>
+                {% if user.profile.is_seller %}
+                  <h5 class="dropdown-header">{{ user.profile }}</h5>
                   <a href="{% url 'social:detail' %}" class="dropdown-item">Your profile</a>
                   <div class="dropdown-divider"></div>
                 {% endif %}

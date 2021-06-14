@@ -34,7 +34,7 @@ class CreateWithReviewerMixin(LoginRequiredMixin):
     """
     def get_form(self, *args, **kwargs):
         form = super().get_form(*args, **kwargs)
-        form.instance.reviewer = UserProfile.objects.get(user=self.request.user)
+        form.instance.reviewer = self.request.user.profile
         return form
 
 
@@ -62,7 +62,7 @@ class OwnerRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
         # Assumes this has a get_object attribute
         # Could test with hasattr()?
-        return self.request.profile == self.get_object().owner
+        return self.request.user.profile == self.get_object().owner
 
 
 class SellerRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
@@ -75,4 +75,4 @@ class SellerRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
         # TODO: Use user groups instead
         # return self.request.user.groups.filter(name='Seller').exists()
-        return self.request.profile.is_seller
+        return self.request.user.profile.is_seller
